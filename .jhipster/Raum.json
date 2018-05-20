@@ -1,0 +1,27 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "raumNr",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "etage",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "groesse",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20180520105141",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "raum",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}
