@@ -19,6 +19,8 @@ spring:
         name: Blackhole
     jackson:
         serialization.write_dates_as_timestamps: false
+    cache:
+        type: simple
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:h2:mem:Blackhole;DB_CLOSE_DELAY=-1
@@ -86,7 +88,7 @@ jhipster:
     security:
         authentication:
             jwt:
-                secret: 6499c15f20390a9dcbb626507f5dbe87529c744a
+                secret: 5e77e1db5a6171d97e94e61487fff6b44c41474f
                 # Token is valid 24 hours
                 token-validity-in-seconds: 86400
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
