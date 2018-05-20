@@ -2,6 +2,14 @@
 # Project Specific
 ######################
 /target/www/**
+/target/classes/
+/target/generated-sources
+/target/generated-test-sources
+/target/m2e-wtp
+/target/maven-status
+/target/test-classes/
+/target/Dockerfile
+/target/.dockerignore
 /src/test/javascript/coverage/
 /src/test/javascript/PhantomJS*/
 
@@ -70,7 +78,6 @@ classes/
 # Maven
 ######################
 /log/
-/target/
 
 ######################
 # Gradle
@@ -84,7 +91,6 @@ classes/
 *.jar
 *.war
 *.ear
-*.db
 
 ######################
 # Windows
