@@ -1,0 +1,68 @@
+<div>
+    <h2>
+        <span>Termins</span>
+        <button class="btn btn-primary float-right jh-create-entity create-termin" [routerLink]="['/', { outlets: { popup: ['termin-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Termin
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="termins">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Bezeichnung</span></th>
+            <th><span>Startzeit</span></th>
+            <th><span>Endzeit</span></th>
+            <th><span>Raum Nr</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let termin of termins ;trackBy: trackId">
+                <td><a [routerLink]="['../termin', termin.id ]">{{termin.id}}</a></td>
+                <td>{{termin.bezeichnung}}</td>
+                <td>{{termin.startzeit | date:'medium'}}</td>
+                <td>{{termin.endzeit | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="termin.raumNr">
+                        <a [routerLink]="['../raum', termin.raumNr?.id ]" >{{termin.raumNr?.raumNr}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../termin', termin.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'termin/'+ termin.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'termin/'+ termin.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
