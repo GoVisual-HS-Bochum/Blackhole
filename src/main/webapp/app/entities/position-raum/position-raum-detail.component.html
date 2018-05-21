@@ -1,0 +1,46 @@
+
+<div *ngIf="positionRaum">
+    <h2><span>Position Raum</span> {{positionRaum.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Gebaeude</span></dt>
+        <dd>
+            <span>{{positionRaum.gebaeude}}</span>
+        </dd>
+        <dt><span>Etage</span></dt>
+        <dd>
+            <span>{{positionRaum.etage}}</span>
+        </dd>
+        <dt><span>Gang</span></dt>
+        <dd>
+            <span>{{positionRaum.gang}}</span>
+        </dd>
+        <dt><span>Seite</span></dt>
+        <dd>
+            <span>{{positionRaum.seite}}</span>
+        </dd>
+        <dt><span>Links</span></dt>
+        <dd>
+            <span>{{positionRaum.links}}</span>
+        </dd>
+        <dt><span>Rechts</span></dt>
+        <dd>
+            <span>{{positionRaum.rechts}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'position-raum/'+ positionRaum.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,68 @@
+<div>
+    <h2>
+        <span>Position Raums</span>
+        <button class="btn btn-primary float-right jh-create-entity create-position-raum" [routerLink]="['/', { outlets: { popup: ['position-raum-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Position Raum
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="positionRaums">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Gebaeude</span></th>
+            <th><span>Etage</span></th>
+            <th><span>Gang</span></th>
+            <th><span>Seite</span></th>
+            <th><span>Links</span></th>
+            <th><span>Rechts</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let positionRaum of positionRaums ;trackBy: trackId">
+                <td><a [routerLink]="['../position-raum', positionRaum.id ]">{{positionRaum.id}}</a></td>
+                <td>{{positionRaum.gebaeude}}</td>
+                <td>{{positionRaum.etage}}</td>
+                <td>{{positionRaum.gang}}</td>
+                <td>{{positionRaum.seite}}</td>
+                <td>{{positionRaum.links}}</td>
+                <td>{{positionRaum.rechts}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../position-raum', positionRaum.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'position-raum/'+ positionRaum.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'position-raum/'+ positionRaum.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
