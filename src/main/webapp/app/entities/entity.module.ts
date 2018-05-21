@@ -4,6 +4,7 @@ import { BlackholePositionRaumModule } from './position-raum/position-raum.modul
 import { BlackholeGroesseModule } from './groesse/groesse.module';
 import { BlackholeItemSetModule } from './item-set/item-set.module';
 import { BlackholeItemModule } from './item/item.module';
+import { BlackholeItemSet_itemModule } from './item-set-item/item-set-item.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -12,6 +13,7 @@ import { BlackholeItemModule } from './item/item.module';
         BlackholeGroesseModule,
         BlackholeItemSetModule,
         BlackholeItemModule,
+        BlackholeItemSet_itemModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],
