@@ -11,7 +11,7 @@ body {
 }
 
 a {
-    color: #533f03;
+    color: #ffffff;
     font-weight: bold;
 }
 
@@ -49,6 +49,10 @@ Generic styles
     background-color: #353d47;
 }
 
+.doubleview {
+    margin-top: 15%;
+}
+
 .error {
     color: white;
     background-color: red;
@@ -60,6 +64,10 @@ Generic styles
 
 .w-40 {
     width: 40% !important;
+}
+
+.w-49 {
+    width: 49% !important;
 }
 
 .w-60 {

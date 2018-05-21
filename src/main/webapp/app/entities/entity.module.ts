@@ -4,7 +4,7 @@ import { BlackholePositionRaumModule } from './position-raum/position-raum.modul
 import { BlackholeGroesseModule } from './groesse/groesse.module';
 import { BlackholeItemSetModule } from './item-set/item-set.module';
 import { BlackholeItemModule } from './item/item.module';
-import { BlackholeItemSet_itemModule } from './item-set-item/item-set-item.module';
+import { BlackholeItemSetItemModule } from './item-set-item/item-set-item.module';
 import { BlackholeRaumModule } from './raum/raum.module';
 import { BlackholeTerminModule } from './termin/termin.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
@@ -15,7 +15,7 @@ import { BlackholeTerminModule } from './termin/termin.module';
         BlackholeGroesseModule,
         BlackholeItemSetModule,
         BlackholeItemModule,
-        BlackholeItemSet_itemModule,
+        BlackholeItemSetItemModule,
         BlackholeRaumModule,
         BlackholeTerminModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */

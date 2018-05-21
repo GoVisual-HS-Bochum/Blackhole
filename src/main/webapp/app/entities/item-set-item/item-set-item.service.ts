@@ -3,39 +3,39 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { SERVER_API_URL } from '../../app.constants';
 
-import { ItemSet_item } from './item-set-item.model';
+import { ItemSetItem } from './item-set-item.model';
 import { createRequestOption } from '../../shared';
 
-export type EntityResponseType = HttpResponse<ItemSet_item>;
+export type EntityResponseType = HttpResponse<ItemSetItem>;
 
 @Injectable()
-export class ItemSet_itemService {
+export class ItemSetItemService {
 
     private resourceUrl =  SERVER_API_URL + 'api/item-set-items';
 
     constructor(private http: HttpClient) { }
 
-    create(itemSet_item: ItemSet_item): Observable<EntityResponseType> {
+    create(itemSet_item: ItemSetItem): Observable<EntityResponseType> {
         const copy = this.convert(itemSet_item);
-        return this.http.post<ItemSet_item>(this.resourceUrl, copy, { observe: 'response' })
+        return this.http.post<ItemSetItem>(this.resourceUrl, copy, { observe: 'response' })
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
-    update(itemSet_item: ItemSet_item): Observable<EntityResponseType> {
+    update(itemSet_item: ItemSetItem): Observable<EntityResponseType> {
         const copy = this.convert(itemSet_item);
-        return this.http.put<ItemSet_item>(this.resourceUrl, copy, { observe: 'response' })
+        return this.http.put<ItemSetItem>(this.resourceUrl, copy, { observe: 'response' })
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
     find(id: number): Observable<EntityResponseType> {
-        return this.http.get<ItemSet_item>(`${this.resourceUrl}/${id}`, { observe: 'response'})
+        return this.http.get<ItemSetItem>(`${this.resourceUrl}/${id}`, { observe: 'response'})
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
-    query(req?: any): Observable<HttpResponse<ItemSet_item[]>> {
+    query(req?: any): Observable<HttpResponse<ItemSetItem[]>> {
         const options = createRequestOption(req);
-        return this.http.get<ItemSet_item[]>(this.resourceUrl, { params: options, observe: 'response' })
-            .map((res: HttpResponse<ItemSet_item[]>) => this.convertArrayResponse(res));
+        return this.http.get<ItemSetItem[]>(this.resourceUrl, { params: options, observe: 'response' })
+            .map((res: HttpResponse<ItemSetItem[]>) => this.convertArrayResponse(res));
     }
 
     delete(id: number): Observable<HttpResponse<any>> {
@@ -43,13 +43,13 @@ export class ItemSet_itemService {
     }
 
     private convertResponse(res: EntityResponseType): EntityResponseType {
-        const body: ItemSet_item = this.convertItemFromServer(res.body);
+        const body: ItemSetItem = this.convertItemFromServer(res.body);
         return res.clone({body});
     }
 
-    private convertArrayResponse(res: HttpResponse<ItemSet_item[]>): HttpResponse<ItemSet_item[]> {
-        const jsonResponse: ItemSet_item[] = res.body;
-        const body: ItemSet_item[] = [];
+    private convertArrayResponse(res: HttpResponse<ItemSetItem[]>): HttpResponse<ItemSetItem[]> {
+        const jsonResponse: ItemSetItem[] = res.body;
+        const body: ItemSetItem[] = [];
         for (let i = 0; i < jsonResponse.length; i++) {
             body.push(this.convertItemFromServer(jsonResponse[i]));
         }
@@ -59,16 +59,16 @@ export class ItemSet_itemService {
     /**
      * Convert a returned JSON object to ItemSet_item.
      */
-    private convertItemFromServer(itemSet_item: ItemSet_item): ItemSet_item {
-        const copy: ItemSet_item = Object.assign({}, itemSet_item);
+    private convertItemFromServer(itemSet_item: ItemSetItem): ItemSetItem {
+        const copy: ItemSetItem = Object.assign({}, itemSet_item);
         return copy;
     }
 
     /**
      * Convert a ItemSet_item to a JSON which can be sent to the server.
      */
-    private convert(itemSet_item: ItemSet_item): ItemSet_item {
-        const copy: ItemSet_item = Object.assign({}, itemSet_item);
+    private convert(itemSet_item: ItemSetItem): ItemSetItem {
+        const copy: ItemSetItem = Object.assign({}, itemSet_item);
         return copy;
     }
 }

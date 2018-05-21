@@ -4,20 +4,20 @@ import { ActivatedRoute } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { ItemSet_item } from './item-set-item.model';
-import { ItemSet_itemPopupService } from './item-set-item-popup.service';
-import { ItemSet_itemService } from './item-set-item.service';
+import { ItemSetItem } from './item-set-item.model';
+import { ItemSetItemPopupService } from './item-set-item-popup.service';
+import { ItemSetItemService } from './item-set-item.service';
 
 @Component({
     selector: 'jhi-item-set-item-delete-dialog',
     templateUrl: './item-set-item-delete-dialog.component.html'
 })
-export class ItemSet_itemDeleteDialogComponent {
+export class ItemSetItemDeleteDialogComponent {
 
-    itemSet_item: ItemSet_item;
+    itemSet_item: ItemSetItem;
 
     constructor(
-        private itemSet_itemService: ItemSet_itemService,
+        private itemSet_itemService: ItemSetItemService,
         public activeModal: NgbActiveModal,
         private eventManager: JhiEventManager
     ) {
@@ -42,19 +42,19 @@ export class ItemSet_itemDeleteDialogComponent {
     selector: 'jhi-item-set-item-delete-popup',
     template: ''
 })
-export class ItemSet_itemDeletePopupComponent implements OnInit, OnDestroy {
+export class ItemSetItemDeletePopupComponent implements OnInit, OnDestroy {
 
     routeSub: any;
 
     constructor(
         private route: ActivatedRoute,
-        private itemSet_itemPopupService: ItemSet_itemPopupService
+        private itemSet_itemPopupService: ItemSetItemPopupService
     ) {}
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
             this.itemSet_itemPopupService
-                .open(ItemSet_itemDeleteDialogComponent as Component, params['id']);
+                .open(ItemSetItemDeleteDialogComponent as Component, params['id']);
         });
     }
 

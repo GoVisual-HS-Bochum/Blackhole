@@ -1,15 +1,15 @@
 import { Routes } from '@angular/router';
 
 import { UserRouteAccessService } from '../../shared';
-import { ItemSet_itemComponent } from './item-set-item.component';
-import { ItemSet_itemDetailComponent } from './item-set-item-detail.component';
-import { ItemSet_itemPopupComponent } from './item-set-item-dialog.component';
-import { ItemSet_itemDeletePopupComponent } from './item-set-item-delete-dialog.component';
+import { ItemSetItemComponent } from './item-set-item.component';
+import { ItemSetItemDetailComponent } from './item-set-item-detail.component';
+import { ItemSetItemPopupComponent } from './item-set-item-dialog.component';
+import { ItemSetItemDeletePopupComponent } from './item-set-item-delete-dialog.component';
 
 export const itemSet_itemRoute: Routes = [
     {
         path: 'item-set-item',
-        component: ItemSet_itemComponent,
+        component: ItemSetItemComponent,
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'ItemSet_items'
@@ -17,7 +17,7 @@ export const itemSet_itemRoute: Routes = [
         canActivate: [UserRouteAccessService]
     }, {
         path: 'item-set-item/:id',
-        component: ItemSet_itemDetailComponent,
+        component: ItemSetItemDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'ItemSet_items'
@@ -29,7 +29,7 @@ export const itemSet_itemRoute: Routes = [
 export const itemSet_itemPopupRoute: Routes = [
     {
         path: 'item-set-item-new',
-        component: ItemSet_itemPopupComponent,
+        component: ItemSetItemPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'ItemSet_items'
@@ -39,7 +39,7 @@ export const itemSet_itemPopupRoute: Routes = [
     },
     {
         path: 'item-set-item/:id/edit',
-        component: ItemSet_itemPopupComponent,
+        component: ItemSetItemPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'ItemSet_items'
@@ -49,7 +49,7 @@ export const itemSet_itemPopupRoute: Routes = [
     },
     {
         path: 'item-set-item/:id/delete',
-        component: ItemSet_itemDeletePopupComponent,
+        component: ItemSetItemDeletePopupComponent,
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'ItemSet_items'

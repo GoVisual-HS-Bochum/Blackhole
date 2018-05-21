@@ -3,21 +3,21 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
-import { ItemSet_item } from './item-set-item.model';
-import { ItemSet_itemService } from './item-set-item.service';
+import { ItemSetItem } from './item-set-item.model';
+import { ItemSetItemService } from './item-set-item.service';
 import { Principal } from '../../shared';
 
 @Component({
     selector: 'jhi-item-set-item',
     templateUrl: './item-set-item.component.html'
 })
-export class ItemSet_itemComponent implements OnInit, OnDestroy {
-itemSet_items: ItemSet_item[];
+export class ItemSetItemComponent implements OnInit, OnDestroy {
+itemSet_items: ItemSetItem[];
     currentAccount: any;
     eventSubscriber: Subscription;
 
     constructor(
-        private itemSet_itemService: ItemSet_itemService,
+        private itemSet_itemService: ItemSetItemService,
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
         private principal: Principal
@@ -26,7 +26,7 @@ itemSet_items: ItemSet_item[];
 
     loadAll() {
         this.itemSet_itemService.query().subscribe(
-            (res: HttpResponse<ItemSet_item[]>) => {
+            (res: HttpResponse<ItemSetItem[]>) => {
                 this.itemSet_items = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
@@ -44,7 +44,7 @@ itemSet_items: ItemSet_item[];
         this.eventManager.destroy(this.eventSubscriber);
     }
 
-    trackId(index: number, item: ItemSet_item) {
+    trackId(index: number, item: ItemSetItem) {
         return item.id;
     }
     registerChangeInItemSet_items() {

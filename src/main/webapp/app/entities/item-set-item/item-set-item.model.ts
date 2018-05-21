@@ -1,6 +1,6 @@
 import { BaseEntity } from './../../shared';
 
-export class ItemSet_item implements BaseEntity {
+export class ItemSetItem implements BaseEntity {
     constructor(
         public id?: number,
         public anzahl?: number,

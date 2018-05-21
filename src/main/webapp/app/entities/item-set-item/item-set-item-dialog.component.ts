@@ -6,9 +6,9 @@ import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
-import { ItemSet_item } from './item-set-item.model';
-import { ItemSet_itemPopupService } from './item-set-item-popup.service';
-import { ItemSet_itemService } from './item-set-item.service';
+import { ItemSetItem } from './item-set-item.model';
+import { ItemSetItemPopupService } from './item-set-item-popup.service';
+import { ItemSetItemService } from './item-set-item.service';
 import { ItemSet, ItemSetService } from '../item-set';
 import { Item, ItemService } from '../item';
 
@@ -16,9 +16,9 @@ import { Item, ItemService } from '../item';
     selector: 'jhi-item-set-item-dialog',
     templateUrl: './item-set-item-dialog.component.html'
 })
-export class ItemSet_itemDialogComponent implements OnInit {
+export class ItemSetItemDialogComponent implements OnInit {
 
-    itemSet_item: ItemSet_item;
+    itemSet_item: ItemSetItem;
     isSaving: boolean;
 
     itemsets: ItemSet[];
@@ -28,7 +28,7 @@ export class ItemSet_itemDialogComponent implements OnInit {
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
-        private itemSet_itemService: ItemSet_itemService,
+        private itemSet_itemService: ItemSetItemService,
         private itemSetService: ItemSetService,
         private itemService: ItemService,
         private eventManager: JhiEventManager
@@ -58,12 +58,12 @@ export class ItemSet_itemDialogComponent implements OnInit {
         }
     }
 
-    private subscribeToSaveResponse(result: Observable<HttpResponse<ItemSet_item>>) {
-        result.subscribe((res: HttpResponse<ItemSet_item>) =>
+    private subscribeToSaveResponse(result: Observable<HttpResponse<ItemSetItem>>) {
+        result.subscribe((res: HttpResponse<ItemSetItem>) =>
             this.onSaveSuccess(res.body), (res: HttpErrorResponse) => this.onSaveError());
     }
 
-    private onSaveSuccess(result: ItemSet_item) {
+    private onSaveSuccess(result: ItemSetItem) {
         this.eventManager.broadcast({ name: 'itemSet_itemListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
@@ -90,23 +90,23 @@ export class ItemSet_itemDialogComponent implements OnInit {
     selector: 'jhi-item-set-item-popup',
     template: ''
 })
-export class ItemSet_itemPopupComponent implements OnInit, OnDestroy {
+export class ItemSetItemPopupComponent implements OnInit, OnDestroy {
 
     routeSub: any;
 
     constructor(
         private route: ActivatedRoute,
-        private itemSet_itemPopupService: ItemSet_itemPopupService
+        private itemSet_itemPopupService: ItemSetItemPopupService
     ) {}
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
                 this.itemSet_itemPopupService
-                    .open(ItemSet_itemDialogComponent as Component, params['id']);
+                    .open(ItemSetItemDialogComponent as Component, params['id']);
             } else {
                 this.itemSet_itemPopupService
-                    .open(ItemSet_itemDialogComponent as Component);
+                    .open(ItemSetItemDialogComponent as Component);
             }
         });
     }

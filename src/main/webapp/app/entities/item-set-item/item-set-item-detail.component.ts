@@ -4,22 +4,22 @@ import { HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { ItemSet_item } from './item-set-item.model';
-import { ItemSet_itemService } from './item-set-item.service';
+import { ItemSetItem } from './item-set-item.model';
+import { ItemSetItemService } from './item-set-item.service';
 
 @Component({
     selector: 'jhi-item-set-item-detail',
     templateUrl: './item-set-item-detail.component.html'
 })
-export class ItemSet_itemDetailComponent implements OnInit, OnDestroy {
+export class ItemSetItemDetailComponent implements OnInit, OnDestroy {
 
-    itemSet_item: ItemSet_item;
+    itemSet_item: ItemSetItem;
     private subscription: Subscription;
     private eventSubscriber: Subscription;
 
     constructor(
         private eventManager: JhiEventManager,
-        private itemSet_itemService: ItemSet_itemService,
+        private itemSet_itemService: ItemSetItemService,
         private route: ActivatedRoute
     ) {
     }
@@ -33,7 +33,7 @@ export class ItemSet_itemDetailComponent implements OnInit, OnDestroy {
 
     load(id) {
         this.itemSet_itemService.find(id)
-            .subscribe((itemSet_itemResponse: HttpResponse<ItemSet_item>) => {
+            .subscribe((itemSet_itemResponse: HttpResponse<ItemSetItem>) => {
                 this.itemSet_item = itemSet_itemResponse.body;
             });
     }

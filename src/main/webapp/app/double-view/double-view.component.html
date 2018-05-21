@@ -1,16 +1,31 @@
-<div class="card" style="width: 18rem;">
+<div class="jh-card doubleview border">
+  <div class="card-header">
+    <div class="btn-group-justified container-fluid">
+      <a href="#" [class]="getBeschreibungClass()" (click)="onClickBeschreibung()">Beschreibung</a>
+      <a href="#" [class]="getZielgruppeClass()" (click)="onClickZielgruppe()">Zielgruppe</a>
+    </div>
+  </div>
   <div class="card-body">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="btn-group btn-group-justified">
-          <a href="#" [class]="getBeschreibungClass()" (click)="onClickBeschreibung()">Beschreibung</a>
-          <a href="#" [class]="getZielgruppeClass()" (click)="onClickZielgruppe()">Zielgruppe</a>
+    <div class="jobs_index_middle_panels">
+      <div *ngIf="zielgruppeSelected">
+        <div class="card-body">
+          <h1 class="card-title">
+            Zeit- &amp; Raumplaner
+          </h1>
+          <p class="card-text">
+            Das Black Hole ist eine Webanwendung die einen Zeitplaner und einen Raumplaner vereint und so größtmögliche Effizienz und
+            Planbarkeit möglich macht.
+          </p>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-            <div *ngIf="zielgruppeSelected">Text für Zielgruppe</div>
-            <div *ngIf="beschreibungSelected">Text für Beschreibung</div>
+      <div *ngIf="beschreibungSelected">
+        <div class="card-body">
+          <h1 class="card-title">
+            Unternehmen &amp; Vereine
+          </h1>
+          <p class="card-text">
+            Die Lösung für Alle die viele Räume oder Plätze verwalten müssen..
+          </p>
         </div>
       </div>
     </div>

@@ -3,14 +3,14 @@ import { RouterModule } from '@angular/router';
 
 import { BlackholeSharedModule } from '../../shared';
 import {
-    ItemSet_itemService,
-    ItemSet_itemPopupService,
-    ItemSet_itemComponent,
-    ItemSet_itemDetailComponent,
-    ItemSet_itemDialogComponent,
-    ItemSet_itemPopupComponent,
-    ItemSet_itemDeletePopupComponent,
-    ItemSet_itemDeleteDialogComponent,
+    ItemSetItemService,
+    ItemSetItemPopupService,
+    ItemSetItemComponent,
+    ItemSetItemDetailComponent,
+    ItemSetItemDialogComponent,
+    ItemSetItemPopupComponent,
+    ItemSetItemDeletePopupComponent,
+    ItemSetItemDeleteDialogComponent,
     itemSet_itemRoute,
     itemSet_itemPopupRoute,
 } from './';
@@ -26,24 +26,24 @@ const ENTITY_STATES = [
         RouterModule.forChild(ENTITY_STATES)
     ],
     declarations: [
-        ItemSet_itemComponent,
-        ItemSet_itemDetailComponent,
-        ItemSet_itemDialogComponent,
-        ItemSet_itemDeleteDialogComponent,
-        ItemSet_itemPopupComponent,
-        ItemSet_itemDeletePopupComponent,
+        ItemSetItemComponent,
+        ItemSetItemDetailComponent,
+        ItemSetItemDialogComponent,
+        ItemSetItemDeleteDialogComponent,
+        ItemSetItemPopupComponent,
+        ItemSetItemDeletePopupComponent,
     ],
     entryComponents: [
-        ItemSet_itemComponent,
-        ItemSet_itemDialogComponent,
-        ItemSet_itemPopupComponent,
-        ItemSet_itemDeleteDialogComponent,
-        ItemSet_itemDeletePopupComponent,
+        ItemSetItemComponent,
+        ItemSetItemDialogComponent,
+        ItemSetItemPopupComponent,
+        ItemSetItemDeleteDialogComponent,
+        ItemSetItemDeletePopupComponent,
     ],
     providers: [
-        ItemSet_itemService,
-        ItemSet_itemPopupService,
+        ItemSetItemService,
+        ItemSetItemPopupService,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class BlackholeItemSet_itemModule {}
+export class BlackholeItemSetItemModule {}

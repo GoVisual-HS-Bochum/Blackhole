@@ -29,17 +29,17 @@ export class DoubleViewComponent implements OnInit {
 
   getBeschreibungClass() {
     if (this.beschreibungSelected) {
-      return 'btn btn-primary';
+      return 'btn btn-light active w-49';
     } else {
-      return 'btn btn-info';
+      return 'btn btn-secondary w-49';
     }
   }
 
   getZielgruppeClass() {
     if (this.zielgruppeSelected) {
-      return 'btn btn-primary';
+      return 'btn btn-light active w-49';
     } else {
-      return 'btn btn-info';
+      return 'btn btn-secondary w-49';
     }
   }
 }
