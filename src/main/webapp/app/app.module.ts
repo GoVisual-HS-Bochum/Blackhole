@@ -26,6 +26,8 @@ import {
     PageRibbonComponent,
     ErrorComponent
 } from './layouts';
+import { RoomOverviewComponent } from './room-overview/room-overview.component';
+import { BlackholeRoomOverviewModule } from './room-overview/room-overview.model';
 
 @NgModule({
     imports: [
@@ -37,6 +39,7 @@ import {
         BlackholeAdminModule,
         BlackholeAccountModule,
         BlackholeEntityModule,
+        BlackholeRoomOverviewModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
