@@ -413,3 +413,7 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Projekte/
 	at org.h2.mvstore.FileStore.open(FileStore.java:173)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:350)
 	... 66 more
+2018-05-21 13:44:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "JHI_AUTHORITY" besteht bereits
+Table "JHI_AUTHORITY" already exists; SQL statement:
+CREATE TABLE PUBLIC.jhi_authority (name VARCHAR(50) NOT NULL) [42101-197]
