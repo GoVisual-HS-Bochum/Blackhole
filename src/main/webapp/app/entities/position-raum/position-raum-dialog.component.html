@@ -1,0 +1,99 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myPositionRaumLabel">Create or edit a Position Raum</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!positionRaum.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="positionRaum.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_gebaeude">Gebaeude</label>
+            <input type="text" class="form-control" name="gebaeude" id="field_gebaeude"
+                [(ngModel)]="positionRaum.gebaeude" required/>
+            <div [hidden]="!(editForm.controls.gebaeude?.dirty && editForm.controls.gebaeude?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.gebaeude?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_etage">Etage</label>
+            <input type="number" class="form-control" name="etage" id="field_etage"
+                [(ngModel)]="positionRaum.etage" required/>
+            <div [hidden]="!(editForm.controls.etage?.dirty && editForm.controls.etage?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.etage?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.etage?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_gang">Gang</label>
+            <input type="number" class="form-control" name="gang" id="field_gang"
+                [(ngModel)]="positionRaum.gang" required/>
+            <div [hidden]="!(editForm.controls.gang?.dirty && editForm.controls.gang?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.gang?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.gang?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_seite">Seite</label>
+            <input type="text" class="form-control" name="seite" id="field_seite"
+                [(ngModel)]="positionRaum.seite" required/>
+            <div [hidden]="!(editForm.controls.seite?.dirty && editForm.controls.seite?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.seite?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_links">Links</label>
+            <input type="text" class="form-control" name="links" id="field_links"
+                [(ngModel)]="positionRaum.links" required/>
+            <div [hidden]="!(editForm.controls.links?.dirty && editForm.controls.links?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.links?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_rechts">Rechts</label>
+            <input type="text" class="form-control" name="rechts" id="field_rechts"
+                [(ngModel)]="positionRaum.rechts" required/>
+            <div [hidden]="!(editForm.controls.rechts?.dirty && editForm.controls.rechts?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.rechts?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

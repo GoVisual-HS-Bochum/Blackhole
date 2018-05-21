@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Raum.
+    -->
+    <changeSet id="20180521125537-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="posid_id"
+                                 baseTableName="raum"
+                                 constraintName="fk_raum_posid_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="position_raum"/>
+
+        <addForeignKeyConstraint baseColumnNames="groid_id"
+                                 baseTableName="raum"
+                                 constraintName="fk_raum_groid_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="groesse"/>
+
+        <addForeignKeyConstraint baseColumnNames="item_set_bez_id"
+                                 baseTableName="raum"
+                                 constraintName="fk_raum_item_set_bez_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="item_set"/>
+
+    </changeSet>
+</databaseChangeLog>

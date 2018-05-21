@@ -1,0 +1,35 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "itemSetBez",
+            "otherEntityName": "itemSet",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "itemSetBez"
+        },
+        {
+            "relationshipName": "bezeichnung",
+            "otherEntityName": "item",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "bezeichnung"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "anzahl",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20180521124126",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "item_set_item",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

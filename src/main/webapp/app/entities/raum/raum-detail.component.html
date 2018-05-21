@@ -1,0 +1,48 @@
+
+<div *ngIf="raum">
+    <h2><span>Raum</span> {{raum.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Raum Nr</span></dt>
+        <dd>
+            <span>{{raum.raumNr}}</span>
+        </dd>
+        <dt><span>Art</span></dt>
+        <dd>
+            <span>{{raum.art}}</span>
+        </dd>
+        <dt><span>Pos ID</span></dt>
+        <dd>
+            <div *ngIf="raum.posID">
+                <a [routerLink]="['/position-raum', raum.posID?.id]">{{raum.posID?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Gro ID</span></dt>
+        <dd>
+            <div *ngIf="raum.groID">
+                <a [routerLink]="['/groesse', raum.groID?.id]">{{raum.groID?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Item Set Bez</span></dt>
+        <dd>
+            <div *ngIf="raum.itemSetBez">
+                <a [routerLink]="['/item-set', raum.itemSetBez?.id]">{{raum.itemSetBez?.itemSetBez}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'raum/'+ raum.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

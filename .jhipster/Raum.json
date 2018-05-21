@@ -1,0 +1,48 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "posID",
+            "otherEntityName": "positionRaum",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "groID",
+            "otherEntityName": "groesse",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "itemSetBez",
+            "otherEntityName": "itemSet",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "itemSetBez"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "raumNr",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "art",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180521125537",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "raum",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

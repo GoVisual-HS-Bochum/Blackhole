@@ -1,0 +1,83 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myTerminLabel">Create or edit a Termin</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!termin.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="termin.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_bezeichnung">Bezeichnung</label>
+            <input type="text" class="form-control" name="bezeichnung" id="field_bezeichnung"
+                [(ngModel)]="termin.bezeichnung" required/>
+            <div [hidden]="!(editForm.controls.bezeichnung?.dirty && editForm.controls.bezeichnung?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.bezeichnung?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_startzeit">Startzeit</label>
+            <div class="d-flex">
+                <input id="field_startzeit" type="datetime-local" class="form-control" name="startzeit" [(ngModel)]="termin.startzeit"
+                required/>
+            </div>
+            <div [hidden]="!(editForm.controls.startzeit?.dirty && editForm.controls.startzeit?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.startzeit?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.startzeit?.errors?.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_endzeit">Endzeit</label>
+            <div class="d-flex">
+                <input id="field_endzeit" type="datetime-local" class="form-control" name="endzeit" [(ngModel)]="termin.endzeit"
+                required/>
+            </div>
+            <div [hidden]="!(editForm.controls.endzeit?.dirty && editForm.controls.endzeit?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.endzeit?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.endzeit?.errors?.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_raumNr">Raum Nr</label>
+            <select class="form-control" id="field_raumNr" name="raumNr" [(ngModel)]="termin.raumNr"  required>
+                <option *ngIf="!editForm.value.raumNr" [ngValue]="null" selected></option>
+                <option [ngValue]="raumOption.id === termin.raumNr?.id ? termin.raumNr : raumOption" *ngFor="let raumOption of raums; trackBy: trackRaumById">{{raumOption.raumNr}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.raumNr?.dirty && editForm.controls.raumNr?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.raumNr?.errors?.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
