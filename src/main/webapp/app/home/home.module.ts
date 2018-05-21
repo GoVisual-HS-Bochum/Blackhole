@@ -11,7 +11,7 @@ import { HOME_ROUTE, HomeComponent } from './';
         RouterModule.forChild([ HOME_ROUTE ])
     ],
     declarations: [
-        HomeComponent,
+        HomeComponent
     ],
     entryComponents: [
     ],

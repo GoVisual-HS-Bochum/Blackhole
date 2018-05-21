@@ -3,6 +3,7 @@ import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
 import { Account, LoginModalService, Principal, User, UserService } from '../shared';
+import { Raum, RaumService } from '../entities/raum';
 
 @Component({
     selector: 'jhi-home',
@@ -10,17 +11,16 @@ import { Account, LoginModalService, Principal, User, UserService } from '../sha
     styleUrls: [
         'home.css'
     ]
-
 })
 export class HomeComponent implements OnInit {
     account: Account;
     modalRef: NgbModalRef;
-    users: User[];
+    raeume: Raum[];
 
     constructor(
         private principal: Principal,
         private loginModalService: LoginModalService,
-        private userService: UserService,
+        private raumService: RaumService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -30,8 +30,6 @@ export class HomeComponent implements OnInit {
             this.account = account;
         });
         this.registerAuthenticationSuccess();
-
-        this.userService.query().subscribe(u => {this.users = u.body});
     }
 
     registerAuthenticationSuccess() {

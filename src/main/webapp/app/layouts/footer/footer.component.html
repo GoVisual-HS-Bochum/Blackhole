@@ -1,3 +1,22 @@
 <div class="footer">
-    <p>This is your footer</p>
+    <div class="footer-left">
+        <img src="../../../content/images/GoVisual.png"></img>
+    </div>
+
+    <div class="footer-center">
+        <span class="footer-center">
+            © 2018 - <span id="u6778-2">GO</span>VISUAL / BLACKHOLE
+        </span>
+    </div>
+    <div class="d-flex">
+        <a class="mr-auto" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/" (click)="collapseNavbar()">
+                IMPRESSUM
+        </a>
+            <span>
+                    &#160; - &#160;
+            </span>
+        <a class="mr-auto" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/" (click)="collapseNavbar()">
+                DATENSCHUTZERKLÄRUNG
+        </a>
+    </div>
 </div>

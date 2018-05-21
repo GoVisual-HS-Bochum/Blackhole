@@ -8,6 +8,7 @@ import {
     JhiAlertComponent,
     JhiAlertErrorComponent
 } from './';
+import { DoubleViewComponent } from '../double-view';
 
 @NgModule({
     imports: [
@@ -15,7 +16,8 @@ import {
     ],
     declarations: [
         JhiAlertComponent,
-        JhiAlertErrorComponent
+        JhiAlertErrorComponent,
+        DoubleViewComponent
     ],
     providers: [
         Title,
@@ -27,7 +29,8 @@ import {
     exports: [
         BlackholeSharedLibsModule,
         JhiAlertComponent,
-        JhiAlertErrorComponent
+        JhiAlertErrorComponent,
+        DoubleViewComponent
     ]
 })
 export class BlackholeSharedCommonModule {

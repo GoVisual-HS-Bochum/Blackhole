@@ -1,9 +1,21 @@
-<div class="row">
+<div class="container-fluid">
+    <!--
     <div [ngSwitch]="isAuthenticated()">
         <ul>
-            <li *ngFor="let user of users">
-                {{user.login}}
+            <li *ngFor="let raum of raeume">
+                {{raum.raumNr}}
             </li>
         </ul>
     </div>
+-->
+    <div class="row">
+        <div class="col-md-6">
+            <img class="logo" align="middle" src="../../content/images/GetYourSpaceInTime.png">
+        </div>
+        <div class="col-md-6 container">
+            <jhi-double-view class="test"></jhi-double-view>
+            <img src="../../content/images/Space.jpg">
+        </div>
+    </div>
+
 </div>
