@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Termin.
+    -->
+    <changeSet id="20180521130325-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="raum_nr_id"
+                                 baseTableName="termin"
+                                 constraintName="fk_termin_raum_nr_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="raum"/>
+
+    </changeSet>
+</databaseChangeLog>

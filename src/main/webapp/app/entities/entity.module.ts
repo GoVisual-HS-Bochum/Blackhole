@@ -5,6 +5,8 @@ import { BlackholeGroesseModule } from './groesse/groesse.module';
 import { BlackholeItemSetModule } from './item-set/item-set.module';
 import { BlackholeItemModule } from './item/item.module';
 import { BlackholeItemSet_itemModule } from './item-set-item/item-set-item.module';
+import { BlackholeRaumModule } from './raum/raum.module';
+import { BlackholeTerminModule } from './termin/termin.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -14,6 +16,8 @@ import { BlackholeItemSet_itemModule } from './item-set-item/item-set-item.modul
         BlackholeItemSetModule,
         BlackholeItemModule,
         BlackholeItemSet_itemModule,
+        BlackholeRaumModule,
+        BlackholeTerminModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],
