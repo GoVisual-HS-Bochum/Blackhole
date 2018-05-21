@@ -7,6 +7,10 @@ Main page styles
     margin-top: 30%;
 }
 
+.divBackground {
+    background-image: url('../../content/images/Space.jpg');
+}
+
 .test {
     z-index: 1;
 }

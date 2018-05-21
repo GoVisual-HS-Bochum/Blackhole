@@ -1,3 +1,18 @@
-<p>
-  double-view works!
-</p>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="btn-group btn-group-justified">
+          <a href="#" [class]="getBeschreibungClass()" (click)="onClickBeschreibung()">Beschreibung</a>
+          <a href="#" [class]="getZielgruppeClass()" (click)="onClickZielgruppe()">Zielgruppe</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+            <div *ngIf="zielgruppeSelected">Text für Zielgruppe</div>
+            <div *ngIf="beschreibungSelected">Text für Beschreibung</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
