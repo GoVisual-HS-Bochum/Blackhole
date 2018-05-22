@@ -15,9 +15,9 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
     <!--
-        Added the entity ItemSet_item.
+        Added the entity ItemSetItem.
     -->
-    <changeSet id="20180521124126-1" author="jhipster">
+    <changeSet id="20180522072052-1" author="jhipster">
         <createTable tableName="item_set_item">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
@@ -30,7 +30,7 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="bezeichnung_id" type="bigint">
+            <column name="item_bez_id" type="bigint">
                 <constraints nullable="false" />
             </column>
 

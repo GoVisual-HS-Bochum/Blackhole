@@ -14,10 +14,10 @@ import { ItemSetItemService } from './item-set-item.service';
 })
 export class ItemSetItemDeleteDialogComponent {
 
-    itemSet_item: ItemSetItem;
+    itemSetItem: ItemSetItem;
 
     constructor(
-        private itemSet_itemService: ItemSetItemService,
+        private itemSetItemService: ItemSetItemService,
         public activeModal: NgbActiveModal,
         private eventManager: JhiEventManager
     ) {
@@ -28,10 +28,10 @@ export class ItemSetItemDeleteDialogComponent {
     }
 
     confirmDelete(id: number) {
-        this.itemSet_itemService.delete(id).subscribe((response) => {
+        this.itemSetItemService.delete(id).subscribe((response) => {
             this.eventManager.broadcast({
-                name: 'itemSet_itemListModification',
-                content: 'Deleted an itemSet_item'
+                name: 'itemSetItemListModification',
+                content: 'Deleted an itemSetItem'
             });
             this.activeModal.dismiss(true);
         });
@@ -48,12 +48,12 @@ export class ItemSetItemDeletePopupComponent implements OnInit, OnDestroy {
 
     constructor(
         private route: ActivatedRoute,
-        private itemSet_itemPopupService: ItemSetItemPopupService
+        private itemSetItemPopupService: ItemSetItemPopupService
     ) {}
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
-            this.itemSet_itemPopupService
+            this.itemSetItemPopupService
                 .open(ItemSetItemDeleteDialogComponent as Component, params['id']);
         });
     }

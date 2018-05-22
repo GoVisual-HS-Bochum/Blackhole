@@ -18,7 +18,7 @@ import { Item, ItemService } from '../item';
 })
 export class ItemSetItemDialogComponent implements OnInit {
 
-    itemSet_item: ItemSetItem;
+    itemSetItem: ItemSetItem;
     isSaving: boolean;
 
     itemsets: ItemSet[];
@@ -28,7 +28,7 @@ export class ItemSetItemDialogComponent implements OnInit {
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
-        private itemSet_itemService: ItemSetItemService,
+        private itemSetItemService: ItemSetItemService,
         private itemSetService: ItemSetService,
         private itemService: ItemService,
         private eventManager: JhiEventManager
@@ -49,12 +49,12 @@ export class ItemSetItemDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        if (this.itemSet_item.id !== undefined) {
+        if (this.itemSetItem.id !== undefined) {
             this.subscribeToSaveResponse(
-                this.itemSet_itemService.update(this.itemSet_item));
+                this.itemSetItemService.update(this.itemSetItem));
         } else {
             this.subscribeToSaveResponse(
-                this.itemSet_itemService.create(this.itemSet_item));
+                this.itemSetItemService.create(this.itemSetItem));
         }
     }
 
@@ -64,7 +64,7 @@ export class ItemSetItemDialogComponent implements OnInit {
     }
 
     private onSaveSuccess(result: ItemSetItem) {
-        this.eventManager.broadcast({ name: 'itemSet_itemListModification', content: 'OK'});
+        this.eventManager.broadcast({ name: 'itemSetItemListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
     }
@@ -96,16 +96,16 @@ export class ItemSetItemPopupComponent implements OnInit, OnDestroy {
 
     constructor(
         private route: ActivatedRoute,
-        private itemSet_itemPopupService: ItemSetItemPopupService
+        private itemSetItemPopupService: ItemSetItemPopupService
     ) {}
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
-                this.itemSet_itemPopupService
+                this.itemSetItemPopupService
                     .open(ItemSetItemDialogComponent as Component, params['id']);
             } else {
-                this.itemSet_itemPopupService
+                this.itemSetItemPopupService
                     .open(ItemSetItemDialogComponent as Component);
             }
         });

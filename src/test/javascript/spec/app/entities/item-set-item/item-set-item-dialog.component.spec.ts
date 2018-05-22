@@ -6,39 +6,39 @@ import { Observable } from 'rxjs/Observable';
 import { JhiEventManager } from 'ng-jhipster';
 
 import { BlackholeTestModule } from '../../../test.module';
-import { ItemSet_itemDialogComponent } from '../../../../../../main/webapp/app/entities/item-set-item/item-set-item-dialog.component';
-import { ItemSet_itemService } from '../../../../../../main/webapp/app/entities/item-set-item/item-set-item.service';
-import { ItemSet_item } from '../../../../../../main/webapp/app/entities/item-set-item/item-set-item.model';
+import { ItemSetItemDialogComponent } from '../../../../../../main/webapp/app/entities/item-set-item/item-set-item-dialog.component';
+import { ItemSetItemService } from '../../../../../../main/webapp/app/entities/item-set-item/item-set-item.service';
+import { ItemSetItem } from '../../../../../../main/webapp/app/entities/item-set-item/item-set-item.model';
 import { ItemSetService } from '../../../../../../main/webapp/app/entities/item-set';
 import { ItemService } from '../../../../../../main/webapp/app/entities/item';
 
 describe('Component Tests', () => {
 
-    describe('ItemSet_item Management Dialog Component', () => {
-        let comp: ItemSet_itemDialogComponent;
-        let fixture: ComponentFixture<ItemSet_itemDialogComponent>;
-        let service: ItemSet_itemService;
+    describe('ItemSetItem Management Dialog Component', () => {
+        let comp: ItemSetItemDialogComponent;
+        let fixture: ComponentFixture<ItemSetItemDialogComponent>;
+        let service: ItemSetItemService;
         let mockEventManager: any;
         let mockActiveModal: any;
 
         beforeEach(async(() => {
             TestBed.configureTestingModule({
                 imports: [BlackholeTestModule],
-                declarations: [ItemSet_itemDialogComponent],
+                declarations: [ItemSetItemDialogComponent],
                 providers: [
                     ItemSetService,
                     ItemService,
-                    ItemSet_itemService
+                    ItemSetItemService
                 ]
             })
-            .overrideTemplate(ItemSet_itemDialogComponent, '')
+            .overrideTemplate(ItemSetItemDialogComponent, '')
             .compileComponents();
         }));
 
         beforeEach(() => {
-            fixture = TestBed.createComponent(ItemSet_itemDialogComponent);
+            fixture = TestBed.createComponent(ItemSetItemDialogComponent);
             comp = fixture.componentInstance;
-            service = fixture.debugElement.injector.get(ItemSet_itemService);
+            service = fixture.debugElement.injector.get(ItemSetItemService);
             mockEventManager = fixture.debugElement.injector.get(JhiEventManager);
             mockActiveModal = fixture.debugElement.injector.get(NgbActiveModal);
         });
@@ -48,9 +48,9 @@ describe('Component Tests', () => {
                 inject([],
                     fakeAsync(() => {
                         // GIVEN
-                        const entity = new ItemSet_item(123);
+                        const entity = new ItemSetItem(123);
                         spyOn(service, 'update').and.returnValue(Observable.of(new HttpResponse({body: entity})));
-                        comp.itemSet_item = entity;
+                        comp.itemSetItem = entity;
                         // WHEN
                         comp.save();
                         tick(); // simulate async
@@ -58,7 +58,7 @@ describe('Component Tests', () => {
                         // THEN
                         expect(service.update).toHaveBeenCalledWith(entity);
                         expect(comp.isSaving).toEqual(false);
-                        expect(mockEventManager.broadcastSpy).toHaveBeenCalledWith({ name: 'itemSet_itemListModification', content: 'OK'});
+                        expect(mockEventManager.broadcastSpy).toHaveBeenCalledWith({ name: 'itemSetItemListModification', content: 'OK'});
                         expect(mockActiveModal.dismissSpy).toHaveBeenCalled();
                     })
                 )
@@ -68,9 +68,9 @@ describe('Component Tests', () => {
                 inject([],
                     fakeAsync(() => {
                         // GIVEN
-                        const entity = new ItemSet_item();
+                        const entity = new ItemSetItem();
                         spyOn(service, 'create').and.returnValue(Observable.of(new HttpResponse({body: entity})));
-                        comp.itemSet_item = entity;
+                        comp.itemSetItem = entity;
                         // WHEN
                         comp.save();
                         tick(); // simulate async
@@ -78,7 +78,7 @@ describe('Component Tests', () => {
                         // THEN
                         expect(service.create).toHaveBeenCalledWith(entity);
                         expect(comp.isSaving).toEqual(false);
-                        expect(mockEventManager.broadcastSpy).toHaveBeenCalledWith({ name: 'itemSet_itemListModification', content: 'OK'});
+                        expect(mockEventManager.broadcastSpy).toHaveBeenCalledWith({ name: 'itemSetItemListModification', content: 'OK'});
                         expect(mockActiveModal.dismissSpy).toHaveBeenCalled();
                     })
                 )

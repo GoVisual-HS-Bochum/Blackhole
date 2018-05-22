@@ -9,12 +9,12 @@
     <include file="config/liquibase/changelog/20180521122431_added_entity_Groesse.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180521122822_added_entity_ItemSet.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180521123217_added_entity_Item.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180521124126_added_entity_ItemSet_item.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180521125537_added_entity_Raum.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180521130325_added_entity_Termin.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180522072052_added_entity_ItemSetItem.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
-    <include file="config/liquibase/changelog/20180521124126_added_entity_constraints_ItemSet_item.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180521125537_added_entity_constraints_Raum.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180521130325_added_entity_constraints_Termin.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180522072052_added_entity_constraints_ItemSetItem.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

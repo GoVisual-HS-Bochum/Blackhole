@@ -4,33 +4,33 @@ import { Observable } from 'rxjs/Observable';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 
 import { BlackholeTestModule } from '../../../test.module';
-import { ItemSet_itemComponent } from '../../../../../../main/webapp/app/entities/item-set-item/item-set-item.component';
-import { ItemSet_itemService } from '../../../../../../main/webapp/app/entities/item-set-item/item-set-item.service';
-import { ItemSet_item } from '../../../../../../main/webapp/app/entities/item-set-item/item-set-item.model';
+import { ItemSetItemComponent } from '../../../../../../main/webapp/app/entities/item-set-item/item-set-item.component';
+import { ItemSetItemService } from '../../../../../../main/webapp/app/entities/item-set-item/item-set-item.service';
+import { ItemSetItem } from '../../../../../../main/webapp/app/entities/item-set-item/item-set-item.model';
 
 describe('Component Tests', () => {
 
-    describe('ItemSet_item Management Component', () => {
-        let comp: ItemSet_itemComponent;
-        let fixture: ComponentFixture<ItemSet_itemComponent>;
-        let service: ItemSet_itemService;
+    describe('ItemSetItem Management Component', () => {
+        let comp: ItemSetItemComponent;
+        let fixture: ComponentFixture<ItemSetItemComponent>;
+        let service: ItemSetItemService;
 
         beforeEach(async(() => {
             TestBed.configureTestingModule({
                 imports: [BlackholeTestModule],
-                declarations: [ItemSet_itemComponent],
+                declarations: [ItemSetItemComponent],
                 providers: [
-                    ItemSet_itemService
+                    ItemSetItemService
                 ]
             })
-            .overrideTemplate(ItemSet_itemComponent, '')
+            .overrideTemplate(ItemSetItemComponent, '')
             .compileComponents();
         }));
 
         beforeEach(() => {
-            fixture = TestBed.createComponent(ItemSet_itemComponent);
+            fixture = TestBed.createComponent(ItemSetItemComponent);
             comp = fixture.componentInstance;
-            service = fixture.debugElement.injector.get(ItemSet_itemService);
+            service = fixture.debugElement.injector.get(ItemSetItemService);
         });
 
         describe('OnInit', () => {
@@ -38,7 +38,7 @@ describe('Component Tests', () => {
                 // GIVEN
                 const headers = new HttpHeaders().append('link', 'link;link');
                 spyOn(service, 'query').and.returnValue(Observable.of(new HttpResponse({
-                    body: [new ItemSet_item(123)],
+                    body: [new ItemSetItem(123)],
                     headers
                 })));
 
@@ -47,7 +47,7 @@ describe('Component Tests', () => {
 
                 // THEN
                 expect(service.query).toHaveBeenCalled();
-                expect(comp.itemSet_items[0]).toEqual(jasmine.objectContaining({id: 123}));
+                expect(comp.itemSetItems[0]).toEqual(jasmine.objectContaining({id: 123}));
             });
         });
     });

@@ -5,34 +5,34 @@ import { Observable } from 'rxjs/Observable';
 import { JhiEventManager } from 'ng-jhipster';
 
 import { BlackholeTestModule } from '../../../test.module';
-import { ItemSet_itemDeleteDialogComponent } from '../../../../../../main/webapp/app/entities/item-set-item/item-set-item-delete-dialog.component';
-import { ItemSet_itemService } from '../../../../../../main/webapp/app/entities/item-set-item/item-set-item.service';
+import { ItemSetItemDeleteDialogComponent } from '../../../../../../main/webapp/app/entities/item-set-item/item-set-item-delete-dialog.component';
+import { ItemSetItemService } from '../../../../../../main/webapp/app/entities/item-set-item/item-set-item.service';
 
 describe('Component Tests', () => {
 
-    describe('ItemSet_item Management Delete Component', () => {
-        let comp: ItemSet_itemDeleteDialogComponent;
-        let fixture: ComponentFixture<ItemSet_itemDeleteDialogComponent>;
-        let service: ItemSet_itemService;
+    describe('ItemSetItem Management Delete Component', () => {
+        let comp: ItemSetItemDeleteDialogComponent;
+        let fixture: ComponentFixture<ItemSetItemDeleteDialogComponent>;
+        let service: ItemSetItemService;
         let mockEventManager: any;
         let mockActiveModal: any;
 
         beforeEach(async(() => {
             TestBed.configureTestingModule({
                 imports: [BlackholeTestModule],
-                declarations: [ItemSet_itemDeleteDialogComponent],
+                declarations: [ItemSetItemDeleteDialogComponent],
                 providers: [
-                    ItemSet_itemService
+                    ItemSetItemService
                 ]
             })
-            .overrideTemplate(ItemSet_itemDeleteDialogComponent, '')
+            .overrideTemplate(ItemSetItemDeleteDialogComponent, '')
             .compileComponents();
         }));
 
         beforeEach(() => {
-            fixture = TestBed.createComponent(ItemSet_itemDeleteDialogComponent);
+            fixture = TestBed.createComponent(ItemSetItemDeleteDialogComponent);
             comp = fixture.componentInstance;
-            service = fixture.debugElement.injector.get(ItemSet_itemService);
+            service = fixture.debugElement.injector.get(ItemSetItemService);
             mockEventManager = fixture.debugElement.injector.get(JhiEventManager);
             mockActiveModal = fixture.debugElement.injector.get(NgbActiveModal);
         });

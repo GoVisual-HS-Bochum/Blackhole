@@ -6,13 +6,13 @@ import { ItemSetItemDetailComponent } from './item-set-item-detail.component';
 import { ItemSetItemPopupComponent } from './item-set-item-dialog.component';
 import { ItemSetItemDeletePopupComponent } from './item-set-item-delete-dialog.component';
 
-export const itemSet_itemRoute: Routes = [
+export const itemSetItemRoute: Routes = [
     {
         path: 'item-set-item',
         component: ItemSetItemComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'ItemSet_items'
+            pageTitle: 'ItemSetItems'
         },
         canActivate: [UserRouteAccessService]
     }, {
@@ -20,19 +20,19 @@ export const itemSet_itemRoute: Routes = [
         component: ItemSetItemDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'ItemSet_items'
+            pageTitle: 'ItemSetItems'
         },
         canActivate: [UserRouteAccessService]
     }
 ];
 
-export const itemSet_itemPopupRoute: Routes = [
+export const itemSetItemPopupRoute: Routes = [
     {
         path: 'item-set-item-new',
         component: ItemSetItemPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'ItemSet_items'
+            pageTitle: 'ItemSetItems'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -42,7 +42,7 @@ export const itemSet_itemPopupRoute: Routes = [
         component: ItemSetItemPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'ItemSet_items'
+            pageTitle: 'ItemSetItems'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
@@ -52,7 +52,7 @@ export const itemSet_itemPopupRoute: Routes = [
         component: ItemSetItemDeletePopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'ItemSet_items'
+            pageTitle: 'ItemSetItems'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

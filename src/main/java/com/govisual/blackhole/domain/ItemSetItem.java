@@ -8,11 +8,11 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * A ItemSet_item.
+ * A ItemSetItem.
  */
 @Entity
 @Table(name = "item_set_item")
-public class ItemSet_item implements Serializable {
+public class ItemSetItem implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -29,7 +29,7 @@ public class ItemSet_item implements Serializable {
 
     @ManyToOne(optional = false)
     @NotNull
-    private Item bezeichnung;
+    private Item itemBez;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -44,7 +44,7 @@ public class ItemSet_item implements Serializable {
         return anzahl;
     }
 
-    public ItemSet_item anzahl(Integer anzahl) {
+    public ItemSetItem anzahl(Integer anzahl) {
         this.anzahl = anzahl;
         return this;
     }
@@ -57,7 +57,7 @@ public class ItemSet_item implements Serializable {
         return itemSetBez;
     }
 
-    public ItemSet_item itemSetBez(ItemSet itemSet) {
+    public ItemSetItem itemSetBez(ItemSet itemSet) {
         this.itemSetBez = itemSet;
         return this;
     }
@@ -66,17 +66,17 @@ public class ItemSet_item implements Serializable {
         this.itemSetBez = itemSet;
     }
 
-    public Item getBezeichnung() {
-        return bezeichnung;
+    public Item getItemBez() {
+        return itemBez;
     }
 
-    public ItemSet_item bezeichnung(Item item) {
-        this.bezeichnung = item;
+    public ItemSetItem itemBez(Item item) {
+        this.itemBez = item;
         return this;
     }
 
-    public void setBezeichnung(Item item) {
-        this.bezeichnung = item;
+    public void setItemBez(Item item) {
+        this.itemBez = item;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -88,11 +88,11 @@ public class ItemSet_item implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ItemSet_item itemSet_item = (ItemSet_item) o;
-        if (itemSet_item.getId() == null || getId() == null) {
+        ItemSetItem itemSetItem = (ItemSetItem) o;
+        if (itemSetItem.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), itemSet_item.getId());
+        return Objects.equals(getId(), itemSetItem.getId());
     }
 
     @Override
@@ -102,7 +102,7 @@ public class ItemSet_item implements Serializable {
 
     @Override
     public String toString() {
-        return "ItemSet_item{" +
+        return "ItemSetItem{" +
             "id=" + getId() +
             ", anzahl=" + getAnzahl() +
             "}";

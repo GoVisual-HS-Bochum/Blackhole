@@ -15,14 +15,14 @@ export class ItemSetItemService {
 
     constructor(private http: HttpClient) { }
 
-    create(itemSet_item: ItemSetItem): Observable<EntityResponseType> {
-        const copy = this.convert(itemSet_item);
+    create(itemSetItem: ItemSetItem): Observable<EntityResponseType> {
+        const copy = this.convert(itemSetItem);
         return this.http.post<ItemSetItem>(this.resourceUrl, copy, { observe: 'response' })
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
-    update(itemSet_item: ItemSetItem): Observable<EntityResponseType> {
-        const copy = this.convert(itemSet_item);
+    update(itemSetItem: ItemSetItem): Observable<EntityResponseType> {
+        const copy = this.convert(itemSetItem);
         return this.http.put<ItemSetItem>(this.resourceUrl, copy, { observe: 'response' })
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
@@ -57,18 +57,18 @@ export class ItemSetItemService {
     }
 
     /**
-     * Convert a returned JSON object to ItemSet_item.
+     * Convert a returned JSON object to ItemSetItem.
      */
-    private convertItemFromServer(itemSet_item: ItemSetItem): ItemSetItem {
-        const copy: ItemSetItem = Object.assign({}, itemSet_item);
+    private convertItemFromServer(itemSetItem: ItemSetItem): ItemSetItem {
+        const copy: ItemSetItem = Object.assign({}, itemSetItem);
         return copy;
     }
 
     /**
-     * Convert a ItemSet_item to a JSON which can be sent to the server.
+     * Convert a ItemSetItem to a JSON which can be sent to the server.
      */
-    private convert(itemSet_item: ItemSetItem): ItemSetItem {
-        const copy: ItemSetItem = Object.assign({}, itemSet_item);
+    private convert(itemSetItem: ItemSetItem): ItemSetItem {
+        const copy: ItemSetItem = Object.assign({}, itemSetItem);
         return copy;
     }
 }

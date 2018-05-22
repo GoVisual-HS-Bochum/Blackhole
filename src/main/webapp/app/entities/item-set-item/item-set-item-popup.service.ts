@@ -12,7 +12,7 @@ export class ItemSetItemPopupService {
     constructor(
         private modalService: NgbModal,
         private router: Router,
-        private itemSet_itemService: ItemSetItemService
+        private itemSetItemService: ItemSetItemService
 
     ) {
         this.ngbModalRef = null;
@@ -26,25 +26,25 @@ export class ItemSetItemPopupService {
             }
 
             if (id) {
-                this.itemSet_itemService.find(id)
-                    .subscribe((itemSet_itemResponse: HttpResponse<ItemSetItem>) => {
-                        const itemSet_item: ItemSetItem = itemSet_itemResponse.body;
-                        this.ngbModalRef = this.itemSet_itemModalRef(component, itemSet_item);
+                this.itemSetItemService.find(id)
+                    .subscribe((itemSetItemResponse: HttpResponse<ItemSetItem>) => {
+                        const itemSetItem: ItemSetItem = itemSetItemResponse.body;
+                        this.ngbModalRef = this.itemSetItemModalRef(component, itemSetItem);
                         resolve(this.ngbModalRef);
                     });
             } else {
                 // setTimeout used as a workaround for getting ExpressionChangedAfterItHasBeenCheckedError
                 setTimeout(() => {
-                    this.ngbModalRef = this.itemSet_itemModalRef(component, new ItemSetItem());
+                    this.ngbModalRef = this.itemSetItemModalRef(component, new ItemSetItem());
                     resolve(this.ngbModalRef);
                 }, 0);
             }
         });
     }
 
-    itemSet_itemModalRef(component: Component, itemSet_item: ItemSetItem): NgbModalRef {
+    itemSetItemModalRef(component: Component, itemSetItem: ItemSetItem): NgbModalRef {
         const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
-        modalRef.componentInstance.itemSet_item = itemSet_item;
+        modalRef.componentInstance.itemSetItem = itemSetItem;
         modalRef.result.then((result) => {
             this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true, queryParamsHandling: 'merge' });
             this.ngbModalRef = null;

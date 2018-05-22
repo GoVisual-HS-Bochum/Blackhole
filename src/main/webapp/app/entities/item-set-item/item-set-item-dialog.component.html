@@ -1,28 +1,28 @@
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 
     <div class="modal-header">
-        <h4 class="modal-title" id="myItemSet_itemLabel">Create or edit a Item Set Item</h4>
+        <h4 class="modal-title" id="myItemSetItemLabel">Create or edit a Item Set Item</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 (click)="clear()">&times;</button>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" [hidden]="!itemSet_item.id">
+        <div class="form-group" [hidden]="!itemSetItem.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                   [(ngModel)]="itemSet_item.id" readonly />
+                   [(ngModel)]="itemSetItem.id" readonly />
         </div>
         <div class="form-group">
             <label class="form-control-label" for="field_anzahl">Anzahl</label>
             <input type="number" class="form-control" name="anzahl" id="field_anzahl"
-                [(ngModel)]="itemSet_item.anzahl" />
+                [(ngModel)]="itemSetItem.anzahl" />
         </div>
 
         <div class="form-group">
             <label class="form-control-label" for="field_itemSetBez">Item Set Bez</label>
-            <select class="form-control" id="field_itemSetBez" name="itemSetBez" [(ngModel)]="itemSet_item.itemSetBez"  required>
+            <select class="form-control" id="field_itemSetBez" name="itemSetBez" [(ngModel)]="itemSetItem.itemSetBez"  required>
                 <option *ngIf="!editForm.value.itemSetBez" [ngValue]="null" selected></option>
-                <option [ngValue]="itemSetOption.id === itemSet_item.itemSetBez?.id ? itemSet_item.itemSetBez : itemSetOption" *ngFor="let itemSetOption of itemsets; trackBy: trackItemSetById">{{itemSetOption.itemSetBez}}</option>
+                <option [ngValue]="itemSetOption.id === itemSetItem.itemSetBez?.id ? itemSetItem.itemSetBez : itemSetOption" *ngFor="let itemSetOption of itemsets; trackBy: trackItemSetById">{{itemSetOption.itemSetBez}}</option>
             </select>
         </div>
         <div [hidden]="!(editForm.controls.itemSetBez?.dirty && editForm.controls.itemSetBez?.invalid)">
@@ -32,15 +32,15 @@
             </small>
         </div>
         <div class="form-group">
-            <label class="form-control-label" for="field_bezeichnung">Bezeichnung</label>
-            <select class="form-control" id="field_bezeichnung" name="bezeichnung" [(ngModel)]="itemSet_item.bezeichnung"  required>
-                <option *ngIf="!editForm.value.bezeichnung" [ngValue]="null" selected></option>
-                <option [ngValue]="itemOption.id === itemSet_item.bezeichnung?.id ? itemSet_item.bezeichnung : itemOption" *ngFor="let itemOption of items; trackBy: trackItemById">{{itemOption.bezeichnung}}</option>
+            <label class="form-control-label" for="field_itemBez">Item Bez</label>
+            <select class="form-control" id="field_itemBez" name="itemBez" [(ngModel)]="itemSetItem.itemBez"  required>
+                <option *ngIf="!editForm.value.itemBez" [ngValue]="null" selected></option>
+                <option [ngValue]="itemOption.id === itemSetItem.itemBez?.id ? itemSetItem.itemBez : itemOption" *ngFor="let itemOption of items; trackBy: trackItemById">{{itemOption.bezeichnung}}</option>
             </select>
         </div>
-        <div [hidden]="!(editForm.controls.bezeichnung?.dirty && editForm.controls.bezeichnung?.invalid)">
+        <div [hidden]="!(editForm.controls.itemBez?.dirty && editForm.controls.itemBez?.invalid)">
             <small class="form-text text-danger"
-                [hidden]="!editForm.controls.bezeichnung?.errors?.required">
+                [hidden]="!editForm.controls.itemBez?.errors?.required">
                 This field is required.
             </small>
         </div>

@@ -11,13 +11,13 @@ import {
     ItemSetItemPopupComponent,
     ItemSetItemDeletePopupComponent,
     ItemSetItemDeleteDialogComponent,
-    itemSet_itemRoute,
-    itemSet_itemPopupRoute,
+    itemSetItemRoute,
+    itemSetItemPopupRoute,
 } from './';
 
 const ENTITY_STATES = [
-    ...itemSet_itemRoute,
-    ...itemSet_itemPopupRoute,
+    ...itemSetItemRoute,
+    ...itemSetItemPopupRoute,
 ];
 
 @NgModule({

@@ -12,41 +12,41 @@
     <div class="row">
     </div>
     <br/>
-    <div class="table-responsive" *ngIf="itemSet_items">
+    <div class="table-responsive" *ngIf="itemSetItems">
         <table class="table table-striped">
             <thead>
             <tr>
             <th><span>ID</span></th>
             <th><span>Anzahl</span></th>
             <th><span>Item Set Bez</span></th>
-            <th><span>Bezeichnung</span></th>
+            <th><span>Item Bez</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let itemSet_item of itemSet_items ;trackBy: trackId">
-                <td><a [routerLink]="['../item-set-item', itemSet_item.id ]">{{itemSet_item.id}}</a></td>
-                <td>{{itemSet_item.anzahl}}</td>
+            <tr *ngFor="let itemSetItem of itemSetItems ;trackBy: trackId">
+                <td><a [routerLink]="['../item-set-item', itemSetItem.id ]">{{itemSetItem.id}}</a></td>
+                <td>{{itemSetItem.anzahl}}</td>
                 <td>
-                    <div *ngIf="itemSet_item.itemSetBez">
-                        <a [routerLink]="['../item-set', itemSet_item.itemSetBez?.id ]" >{{itemSet_item.itemSetBez?.itemSetBez}}</a>
+                    <div *ngIf="itemSetItem.itemSetBez">
+                        <a [routerLink]="['../item-set', itemSetItem.itemSetBez?.id ]" >{{itemSetItem.itemSetBez?.itemSetBez}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="itemSet_item.bezeichnung">
-                        <a [routerLink]="['../item', itemSet_item.bezeichnung?.id ]" >{{itemSet_item.bezeichnung?.bezeichnung}}</a>
+                    <div *ngIf="itemSetItem.itemBez">
+                        <a [routerLink]="['../item', itemSetItem.itemBez?.id ]" >{{itemSetItem.itemBez?.bezeichnung}}</a>
                     </div>
                 </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
-                                [routerLink]="['../item-set-item', itemSet_item.id ]"
+                                [routerLink]="['../item-set-item', itemSetItem.id ]"
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="d-none d-md-inline">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'item-set-item/'+ itemSet_item.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'item-set-item/'+ itemSetItem.id + '/edit'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-primary btn-sm">
@@ -54,7 +54,7 @@
                             <span class="d-none d-md-inline">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'item-set-item/'+ itemSet_item.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'item-set-item/'+ itemSetItem.id + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">
