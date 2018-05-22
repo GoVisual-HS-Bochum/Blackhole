@@ -1,4 +1,111 @@
-  <div>
-      room-overview works!
+<div class="row">
+<!--DatePicker im Header Anfang-->
+  <div class="col-12">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6">
+          <form class="form-inline">
+            <div class="form-group">
+              <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                    <img src="..\..\content\images\calender-icon.png" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-xs-6">
+          <button type="button" class="btn">Suchen</button>
+        </div>
+      </div>
+    </div>
   </div>
+<!--DatePicker im Header Ende-->
 
+<div class="w-100"></div>
+
+<!--Etagenwahl Anfang-->
+  <div class="col">
+    <div class="btn-group-vertical">
+      <button type="button" *ngFor="let item of levels; let i = index;" [class]="getClass(i)" (click)="onLevelClick(i)">Etage {{levels[i]}}</button>
+    </div>
+  </div>
+<!--Etagenwahl Anfang-->
+
+<!--Räume auf der Etage Anfang-->
+  <div class="col">
+    <table class="table table-light w-60">
+      <thead>
+        <tr>
+          <th scope="col">Raum-Nr</th>
+          <th scope="col">Art</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let raum of raeume">
+          <td>{{raum.raumNr}}</td>
+          <td>{{raum.art}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<!--Räume auf der Etage Ende-->
+
+  <div class="w-100"></div>
+
+<!--Inventar des Raums Anfang-->
+  <div class="col">
+    <table class="table table-light w-20">
+      <thead>
+        <tr>
+          <th scope="col">Items</th>
+          <th scope="col">#</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>dummy</td>
+          <td>12</td>
+        </tr>
+        <tr>
+          <td>dummy2</td>
+          <td>1</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<!--Inventar des Raums Ende-->
+
+<!--Belegung des Raums Anfang-->
+  <div class="col">
+    <table class="table table-light">
+      <thead>
+        <tr>
+          <th scope="col">dummy</th>
+          <th scope="col">dummy</th>
+          <th scope="col">dummy</th>
+          <th scope="col">dummy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>dummy</td>
+          <td>dummy</td>
+          <td>dummy</td>
+          <td>dummy</td>
+        </tr>
+        <tr>
+          <td>dummy</td>
+          <td>dummy</td>
+          <td>dummy</td>
+          <td>dummy</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<!--Belegung des Raums Anfang-->
+
+</div>
