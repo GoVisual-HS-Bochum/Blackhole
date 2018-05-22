@@ -417,3 +417,15 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Projekte/
 org.h2.jdbc.JdbcSQLException: Tabelle "JHI_AUTHORITY" besteht bereits
 Table "JHI_AUTHORITY" already exists; SQL statement:
 CREATE TABLE PUBLIC.jhi_authority (name VARCHAR(50) NOT NULL) [42101-197]
+2018-05-22 09:21:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "ITEM_SET_ITEM" besteht bereits
+Table "ITEM_SET_ITEM" already exists; SQL statement:
+CREATE TABLE PUBLIC.item_set_item (id BIGINT AUTO_INCREMENT NOT NULL, anzahl INT, item_set_bez_id BIGINT NOT NULL, item_bez_id BIGINT NOT NULL, CONSTRAINT PK_ITEM_SET_ITEM PRIMARY KEY (id)) [42101-197]
+2018-05-22 09:23:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "ITEM_SET_ITEM" besteht bereits
+Table "ITEM_SET_ITEM" already exists; SQL statement:
+CREATE TABLE PUBLIC.item_set_item (id BIGINT AUTO_INCREMENT NOT NULL, anzahl INT, item_set_bez_id BIGINT NOT NULL, item_bez_id BIGINT NOT NULL, CONSTRAINT PK_ITEM_SET_ITEM PRIMARY KEY (id)) [42101-197]
+2018-05-22 09:31:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabelle "ITEM_SET_ITEM" besteht bereits
+Table "ITEM_SET_ITEM" already exists; SQL statement:
+CREATE TABLE PUBLIC.item_set_item (id BIGINT AUTO_INCREMENT NOT NULL, anzahl INT, item_set_bez_id BIGINT NOT NULL, item_bez_id BIGINT NOT NULL, CONSTRAINT PK_ITEM_SET_ITEM PRIMARY KEY (id)) [42101-197]

@@ -1,23 +1,23 @@
 
-<div *ngIf="itemSet_item">
-    <h2><span>Item Set Item</span> {{itemSet_item.id}}</h2>
+<div *ngIf="itemSetItem">
+    <h2><span>Item Set Item</span> {{itemSetItem.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
         <dt><span>Anzahl</span></dt>
         <dd>
-            <span>{{itemSet_item.anzahl}}</span>
+            <span>{{itemSetItem.anzahl}}</span>
         </dd>
         <dt><span>Item Set Bez</span></dt>
         <dd>
-            <div *ngIf="itemSet_item.itemSetBez">
-                <a [routerLink]="['/item-set', itemSet_item.itemSetBez?.id]">{{itemSet_item.itemSetBez?.itemSetBez}}</a>
+            <div *ngIf="itemSetItem.itemSetBez">
+                <a [routerLink]="['/item-set', itemSetItem.itemSetBez?.id]">{{itemSetItem.itemSetBez?.itemSetBez}}</a>
             </div>
         </dd>
-        <dt><span>Bezeichnung</span></dt>
+        <dt><span>Item Bez</span></dt>
         <dd>
-            <div *ngIf="itemSet_item.bezeichnung">
-                <a [routerLink]="['/item', itemSet_item.bezeichnung?.id]">{{itemSet_item.bezeichnung?.bezeichnung}}</a>
+            <div *ngIf="itemSetItem.itemBez">
+                <a [routerLink]="['/item', itemSetItem.itemBez?.id]">{{itemSetItem.itemBez?.bezeichnung}}</a>
             </div>
         </dd>
     </dl>
@@ -29,7 +29,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'item-set-item/'+ itemSet_item.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'item-set-item/'+ itemSetItem.id + '/edit'} }]"
             replaceUrl="true"
             queryParamsHandling="merge"
             class="btn btn-primary">

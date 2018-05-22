@@ -12,12 +12,12 @@ import { Principal } from '../../shared';
     templateUrl: './item-set-item.component.html'
 })
 export class ItemSetItemComponent implements OnInit, OnDestroy {
-itemSet_items: ItemSetItem[];
+itemSetItems: ItemSetItem[];
     currentAccount: any;
     eventSubscriber: Subscription;
 
     constructor(
-        private itemSet_itemService: ItemSetItemService,
+        private itemSetItemService: ItemSetItemService,
         private jhiAlertService: JhiAlertService,
         private eventManager: JhiEventManager,
         private principal: Principal
@@ -25,9 +25,9 @@ itemSet_items: ItemSetItem[];
     }
 
     loadAll() {
-        this.itemSet_itemService.query().subscribe(
+        this.itemSetItemService.query().subscribe(
             (res: HttpResponse<ItemSetItem[]>) => {
-                this.itemSet_items = res.body;
+                this.itemSetItems = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -37,7 +37,7 @@ itemSet_items: ItemSetItem[];
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });
-        this.registerChangeInItemSet_items();
+        this.registerChangeInItemSetItems();
     }
 
     ngOnDestroy() {
@@ -47,8 +47,8 @@ itemSet_items: ItemSetItem[];
     trackId(index: number, item: ItemSetItem) {
         return item.id;
     }
-    registerChangeInItemSet_items() {
-        this.eventSubscriber = this.eventManager.subscribe('itemSet_itemListModification', (response) => this.loadAll());
+    registerChangeInItemSetItems() {
+        this.eventSubscriber = this.eventManager.subscribe('itemSetItemListModification', (response) => this.loadAll());
     }
 
     private onError(error) {

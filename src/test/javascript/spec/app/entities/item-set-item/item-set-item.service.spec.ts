@@ -3,14 +3,14 @@ import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { JhiDateUtils } from 'ng-jhipster';
 
-import { ItemSet_itemService } from '../../../../../../main/webapp/app/entities/item-set-item/item-set-item.service';
+import { ItemSetItemService } from '../../../../../../main/webapp/app/entities/item-set-item/item-set-item.service';
 import { SERVER_API_URL } from '../../../../../../main/webapp/app/app.constants';
 
 describe('Service Tests', () => {
 
-    describe('ItemSet_item Service', () => {
+    describe('ItemSetItem Service', () => {
         let injector: TestBed;
-        let service: ItemSet_itemService;
+        let service: ItemSetItemService;
         let httpMock: HttpTestingController;
 
         beforeEach(() => {
@@ -20,11 +20,11 @@ describe('Service Tests', () => {
                 ],
                 providers: [
                     JhiDateUtils,
-                    ItemSet_itemService
+                    ItemSetItemService
                 ]
             });
             injector = getTestBed();
-            service = injector.get(ItemSet_itemService);
+            service = injector.get(ItemSetItemService);
             httpMock = injector.get(HttpTestingController);
         });
 
@@ -37,7 +37,7 @@ describe('Service Tests', () => {
                 const resourceUrl = SERVER_API_URL + 'api/item-set-items';
                 expect(req.request.url).toEqual(resourceUrl + '/' + 123);
             });
-            it('should return ItemSet_item', () => {
+            it('should return ItemSetItem', () => {
 
                 service.find(123).subscribe((received) => {
                     expect(received.body.id).toEqual(123);

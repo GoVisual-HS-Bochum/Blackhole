@@ -11,7 +11,7 @@
             "otherEntityField": "itemSetBez"
         },
         {
-            "relationshipName": "bezeichnung",
+            "relationshipName": "itemBez",
             "otherEntityName": "item",
             "relationshipType": "many-to-one",
             "relationshipValidateRules": [
@@ -26,7 +26,7 @@
             "fieldType": "Integer"
         }
     ],
-    "changelogDate": "20180521124126",
+    "changelogDate": "20180522072052",
     "dto": "no",
     "service": "no",
     "entityTableName": "item_set_item",

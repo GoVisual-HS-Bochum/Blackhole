@@ -5,7 +5,7 @@ export class ItemSetItem implements BaseEntity {
         public id?: number,
         public anzahl?: number,
         public itemSetBez?: BaseEntity,
-        public bezeichnung?: BaseEntity,
+        public itemBez?: BaseEntity,
     ) {
     }
 }

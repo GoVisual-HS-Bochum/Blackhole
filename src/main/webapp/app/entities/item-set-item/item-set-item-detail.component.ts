@@ -13,13 +13,13 @@ import { ItemSetItemService } from './item-set-item.service';
 })
 export class ItemSetItemDetailComponent implements OnInit, OnDestroy {
 
-    itemSet_item: ItemSetItem;
+    itemSetItem: ItemSetItem;
     private subscription: Subscription;
     private eventSubscriber: Subscription;
 
     constructor(
         private eventManager: JhiEventManager,
-        private itemSet_itemService: ItemSetItemService,
+        private itemSetItemService: ItemSetItemService,
         private route: ActivatedRoute
     ) {
     }
@@ -28,13 +28,13 @@ export class ItemSetItemDetailComponent implements OnInit, OnDestroy {
         this.subscription = this.route.params.subscribe((params) => {
             this.load(params['id']);
         });
-        this.registerChangeInItemSet_items();
+        this.registerChangeInItemSetItems();
     }
 
     load(id) {
-        this.itemSet_itemService.find(id)
-            .subscribe((itemSet_itemResponse: HttpResponse<ItemSetItem>) => {
-                this.itemSet_item = itemSet_itemResponse.body;
+        this.itemSetItemService.find(id)
+            .subscribe((itemSetItemResponse: HttpResponse<ItemSetItem>) => {
+                this.itemSetItem = itemSetItemResponse.body;
             });
     }
     previousState() {
@@ -46,10 +46,10 @@ export class ItemSetItemDetailComponent implements OnInit, OnDestroy {
         this.eventManager.destroy(this.eventSubscriber);
     }
 
-    registerChangeInItemSet_items() {
+    registerChangeInItemSetItems() {
         this.eventSubscriber = this.eventManager.subscribe(
-            'itemSet_itemListModification',
-            (response) => this.load(this.itemSet_item.id)
+            'itemSetItemListModification',
+            (response) => this.load(this.itemSetItem.id)
         );
     }
 }
