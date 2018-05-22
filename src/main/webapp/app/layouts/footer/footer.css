@@ -26,6 +26,10 @@
     float:right;
 }
 
+.footer-color {
+    background-color: #2e3238;
+}
+
 .goVisual {
     background: url("../../../content/images/blackhole.png") no-repeat center center;
 }
