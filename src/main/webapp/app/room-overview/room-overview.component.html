@@ -18,11 +18,17 @@
         </div>
         <div class="col-xs-3 ml-1">
             <button class="btn btn-secondary" (click)="filterIsVisible = !filterIsVisible">Inventare</button>
-            <ul class="items" *ngIf="filterIsVisible">
-              <li *ngFor="let item of filterList">
-                <input 	type="checkbox" (click)="checkboxClick(item)" name="items" value="{{ item.id }}">{{ item.bezeichnung }}</input>
-              </li>
-           </ul>  
+            <div class="card" *ngIf="filterIsVisible">
+                <div class="card-body">
+                    <div class="container">
+                        <ul class="items" >
+                          <div*ngFor="let item of filterList">
+                            <input 	type="checkbox" (click)="checkboxClick(item)" name="items" value="{{ item.id }}">{{ item.bezeichnung }}</input>
+                        </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-xs-3 ml-1">
           <button type="button" (click)="showBuchen = !showBuchen"class="btn btn-secondary">Buchen</button>
