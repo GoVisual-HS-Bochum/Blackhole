@@ -1,11 +1,10 @@
 <div class="row">
 <!--DatePicker im Header Anfang-->
   <div class="col-12">
-    <div class="container">
       <div class="row">
-        <div class="col-xs-6">
+        <div class="col-xs-3 ml-2">
           <form class="form-inline">
-            <div class="form-group">
+            <div class="form-group">            
               <div class="input-group">
                 <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
                 <div class="input-group-append">
@@ -17,11 +16,24 @@
             </div>
           </form>
         </div>
-        <div class="col-xs-6">
-          <button type="button" class="btn">Suchen</button>
+        <div class="col-xs-3 ml-1">
+          <button type="button" class="btn btn-secondary">Suchen</button>
+        </div>
+        <div class="col-xs-3 ml-1">
+          <button type="button" (click)="showBuchen = !showBuchen"class="btn btn-secondary">Buchen</button>
+          <div *ngIf="showBuchen">
+              <div class="card">
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <button type="button" (click)="showBuchen = false"class="btn btn-secondary btn-sm">X</button>
+                        </div>
+                      </div>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
-    </div>
   </div>
 <!--DatePicker im Header Ende-->
 
@@ -45,7 +57,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let raum of raeume">
+        <tr (click)="setClickedRow(i)" *ngFor="let raum of raeume; let i = index" [class.active]="i == selectedRow">
           <td>{{raum.raumNr}}</td>
           <td>{{raum.art}}</td>
         </tr>
@@ -66,13 +78,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>dummy</td>
-          <td>12</td>
-        </tr>
-        <tr>
-          <td>dummy2</td>
-          <td>1</td>
+        <tr *ngFor="let item of items;">
+          <td>{{item.bezeichnung}}</td>
+          <td>{{item.anzahl}}</td>
         </tr>
       </tbody>
     </table>
@@ -84,28 +92,22 @@
     <table class="table table-light">
       <thead>
         <tr>
-          <th scope="col">dummy</th>
-          <th scope="col">dummy</th>
-          <th scope="col">dummy</th>
-          <th scope="col">dummy</th>
+          <th scope="col">Bezeichnung</th>
+          <th scope="col">Raum</th>
+          <th scope="col">Startzeit</th>
+          <th scope="col">Endzeit</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>dummy</td>
-          <td>dummy</td>
-          <td>dummy</td>
-          <td>dummy</td>
-        </tr>
-        <tr>
-          <td>dummy</td>
-          <td>dummy</td>
-          <td>dummy</td>
-          <td>dummy</td>
+        <tr *ngFor="let termin of termine;">
+          <td>{{termin.bezeichnung}}</td>
+          <td>{{termin.raum.raumNr}}</td>
+          <td>{{termin.startzeit | date:'medium'}}</td>
+          <td>{{termin.endzeit | date:'medium'}}</td>
         </tr>
       </tbody>
     </table>
   </div>
 <!--Belegung des Raums Anfang-->
-
 </div>
+

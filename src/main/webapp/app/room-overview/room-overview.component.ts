@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { PositionRaumService } from '../entities/position-raum';
 import { Raum, RaumService } from '../entities/raum';
+import { ItemSet, ItemSetService } from '../entities/item-set';
+import { ItemSetItemService, ItemSetItem } from '../entities/item-set-item';
+import { ItemService, Item } from '../entities/item';
+import { TerminService, Termin } from '../entities/termin';
 
 @Component({
   selector: 'jhi-room-overview',
@@ -13,10 +17,70 @@ export class RoomOverviewComponent implements OnInit {
   maxLevel = 0;
   levels: number[] = new Array<number>();
   raeume: Raum[];
+  setClickedRow: Function;
+  selectedRow: Number;
+  itemSets: ItemSet[];
+  itemSetItems: ItemSetItem[];
+  items: Item[];
+  termine: Termin[];
+  showBuchen: Boolean = false;
 
-  constructor(private positionRaumService: PositionRaumService, private raumService: RaumService) { }
+  constructor(private positionRaumService: PositionRaumService,
+    private raumService: RaumService,
+    private itemSetService: ItemSetService,
+    private itemSetItemService: ItemSetItemService,
+    private itemService: ItemService,
+    private terminService: TerminService) {
+    this.setClickedRow = function(index) {
+      this.selectedRow = index;
+      this.items = new Array<Item>();
+      this.termine = new Array<Termin>();
+
+      const raum: Raum = this.raeume[index];
+      if (this.itemSets !== null && this.itemSets !== undefined) {
+        this.itemSets.forEach((element) => {
+          const itemSet: ItemSet = element;
+
+          if (itemSet.id === raum.itemSetBez.id) {
+            this.itemSetItems.forEach((e) => {
+              const itemSetItem: ItemSetItem = e;
+
+              if (itemSetItem.itemSetBez.id === itemSet.id) {
+                let item: Item;
+                itemService.find(itemSetItem.itemBez.id).subscribe((i) => {
+                  item = i.body;
+                  item.anzahl = itemSetItem.anzahl;
+                  this.items.push(item);
+                });
+              }
+            });
+          }
+        });
+      }
+
+      this.terminService.query()
+      .map((termine) => termine.body)
+      .subscribe((termine) => {
+        termine.forEach((element) => {
+          const termin = element;
+          this.raeume.forEach((r) => {
+            if (r.id === termin.raumNr.id) {
+              termin.raum = r;
+
+              if (termin.raum === this.raeume[index]) {
+                this.termine.push(element);
+              }
+            }
+          });
+        });
+      });
+    };
+  }
 
   ngOnInit() {
+    this.itemSets = new Array<ItemSet>();
+    this.itemSetItems = new Array<ItemSetItem>();
+
     this.positionRaumService.query()
       .map((positionRaum) => positionRaum.body)
       .subscribe((positionRaum) => {
@@ -32,6 +96,22 @@ export class RoomOverviewComponent implements OnInit {
 
         this.onLevelClick(0);
       });
+
+    this.itemSetService.query()
+      .map((itemSets) => itemSets.body)
+      .subscribe((itemSets) => {
+        itemSets.forEach((element) => {
+          this.itemSets.push(element);
+        });
+      });
+
+    this.itemSetItemService.query()
+      .map((itemSetItems) => itemSetItems.body)
+      .subscribe((itemSetItems) => {
+        itemSetItems.forEach((element) => {
+          this.itemSetItems.push(element);
+        });
+      });
   }
 
   onLevelClick(level: number) {
@@ -41,7 +121,7 @@ export class RoomOverviewComponent implements OnInit {
 
   getClass(level: number) {
     if (this.levels[level] === this.selectedLevel) {
-      return 'btn btn-light active';
+      return 'btn btn-light';
     } else {
       return 'btn btn-secondary';
     }
@@ -50,17 +130,17 @@ export class RoomOverviewComponent implements OnInit {
   private getRäumeWithLevel() {
     this.raeume = new Array<Raum>();
     this.positionRaumService.query()
-    .map((positionRaum) => positionRaum.body)
-    .subscribe((positionRaum) => {
-      positionRaum.forEach((element) => {
-        if (element.etage === this.selectedLevel) {
-          this.getRäumeAtLevel(element.id);
-        }
+      .map((positionRaum) => positionRaum.body)
+      .subscribe((positionRaum) => {
+        positionRaum.forEach((element) => {
+          if (element.etage === this.selectedLevel) {
+            this.getRäumeAtLevel(element.id);
+          }
+        });
       });
-    });
   }
 
   private getRäumeAtLevel(raumId: number) {
-    this.raumService.find(raumId).map( (r) => r.body).subscribe( (r) => this.raeume.push(r));
+    this.raumService.find(raumId).map((r) => r.body).subscribe((r) => this.raeume.push(r));
   }
 }
