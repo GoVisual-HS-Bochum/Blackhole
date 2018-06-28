@@ -13,6 +13,7 @@ import { TerminService, Termin } from '../entities/termin';
 })
 export class RoomOverviewComponent implements OnInit {
 
+  filterIsVisible: Boolean = false;
   selectedLevel: number;
   maxLevel = 0;
   levels: number[] = new Array<number>();
@@ -21,6 +22,8 @@ export class RoomOverviewComponent implements OnInit {
   selectedRow: Number;
   itemSets: ItemSet[];
   itemSetItems: ItemSetItem[];
+  filterList: Item[];
+  selectedFilter: Item[];
   items: Item[];
   termine: Termin[];
   showBuchen: Boolean = false;
@@ -80,6 +83,8 @@ export class RoomOverviewComponent implements OnInit {
   ngOnInit() {
     this.itemSets = new Array<ItemSet>();
     this.itemSetItems = new Array<ItemSetItem>();
+    this.filterList = new Array<Item>();
+    this.selectedFilter = new Array<Item>();
 
     this.positionRaumService.query()
       .map((positionRaum) => positionRaum.body)
@@ -112,6 +117,12 @@ export class RoomOverviewComponent implements OnInit {
           this.itemSetItems.push(element);
         });
       });
+
+    this.itemService.query()
+      .map((items) => items.body)
+      .subscribe((items) => {
+        this.filterList = items;
+      });
   }
 
   onLevelClick(level: number) {
@@ -142,5 +153,60 @@ export class RoomOverviewComponent implements OnInit {
 
   private getRäumeAtLevel(raumId: number) {
     this.raumService.find(raumId).map((r) => r.body).subscribe((r) => this.raeume.push(r));
+  }
+
+  public checkboxClick(filterID: Item) {
+    const index: number = this.selectedFilter.indexOf(filterID);
+    if ( index > -1 ) {
+      this.selectedFilter.splice(index, 1);
+    } else {
+      this.selectedFilter.push(filterID);
+    }
+    this.colorRoomsByFilter();
+  }
+
+  private colorRoomsByFilter() {
+    const raeume: Raum[] = new Array<Raum>();
+
+    this.raeume.forEach((raum) => {
+      if (raum.itemSetBez !== null && raum.itemSetBez !== undefined) {
+        let itemSet: ItemSet;
+        this.itemSets.forEach((element) => {
+          if (element.id === raum.itemSetBez.id) {
+            itemSet = element;
+          }
+        });
+        const items: Item[] = new Array<Item>();
+
+        this.itemSetItems.forEach((element) => {
+          if (element.itemSetBez.id === itemSet.id) {
+            this.filterList.forEach((item) => {
+              if (item.id === element.itemBez.id) {
+                items.push(item);
+              }
+            });
+          }
+        });
+
+        this.selectedFilter.forEach((filter) => {
+          const index: number = items.indexOf(filter);
+          if ( index > -1 ) {
+            raeume.push(raum);
+          }
+        });
+      }
+    });
+    this.raeume.forEach((r) => {
+      document.getElementById(r.raumNr).style.backgroundColor = '#FFFFFF';
+    });
+
+    this.raeume.forEach((r) => {
+      raeume.forEach((filteredRaum) => {
+        
+        if (r.id === filteredRaum.id) {
+          document.getElementById(filteredRaum.raumNr).style.backgroundColor = '#660066';
+        }
+      });
+    });
   }
 }
