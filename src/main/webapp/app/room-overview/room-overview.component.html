@@ -6,7 +6,7 @@
           <form class="form-inline">
             <div class="form-group">        
               <div class="input-group">
-                <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                <input class="form-control" [placeholder]="date | date:'dd-mm-yyyy'" name="dp" [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker">
                 <div class="input-group-append">
                   <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
                     <img src="..\..\content\images\calender-icon.png" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
@@ -38,6 +38,13 @@
                     <div class="container">
                         <div class="row">
                             <button type="button" (click)="showBuchen = false"class="btn btn-secondary btn-sm">X</button>
+                            <label for="start-time">Start: </label>
+                            <input type="time" id="startTime" name="startTime" min="8:00" max="18:00" required />
+                            <label for="end-time">Ende: </label>
+                            <input type="time" id="endTime" name="endTime" min="8:00" max="18:00" required />
+                            <span class="hours">Öffnungszeiten: 8:00 bis 18:00</span>
+                            <input type="text" [(ngModel)]="_bez" id="bez" name="bez" required />
+                            <button type="button" (click)="addNewBooking()"class="btn btn-secondary">OK</button>
                         </div>
                       </div>
                 </div>

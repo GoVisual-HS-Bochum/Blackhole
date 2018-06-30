@@ -27,6 +27,12 @@ export class RoomOverviewComponent implements OnInit {
   items: Item[];
   termine: Termin[];
   showBuchen: Boolean = false;
+  /* Elemente von Buchen Button */
+  _startTime: HTMLElement;
+  _endTime: HTMLElement;
+  _bez: string;
+  date: number = Date.now();
+  selectedRoom: Raum;
 
   constructor(private positionRaumService: PositionRaumService,
     private raumService: RaumService,
@@ -40,6 +46,7 @@ export class RoomOverviewComponent implements OnInit {
       this.termine = new Array<Termin>();
 
       const raum: Raum = this.raeume[index];
+      this.selectedRoom = raum;
       if (this.itemSets !== null && this.itemSets !== undefined) {
         this.itemSets.forEach((element) => {
           const itemSet: ItemSet = element;
@@ -85,7 +92,9 @@ export class RoomOverviewComponent implements OnInit {
     this.itemSetItems = new Array<ItemSetItem>();
     this.filterList = new Array<Item>();
     this.selectedFilter = new Array<Item>();
-
+    /* Elemente von Buchen Knopf */
+    this._startTime = document.getElementById('startTime');
+    this._endTime = document.getElementById('endTime');
     this.positionRaumService.query()
       .map((positionRaum) => positionRaum.body)
       .subscribe((positionRaum) => {
@@ -202,11 +211,21 @@ export class RoomOverviewComponent implements OnInit {
 
     this.raeume.forEach((r) => {
       raeume.forEach((filteredRaum) => {
-        
         if (r.id === filteredRaum.id) {
           document.getElementById(filteredRaum.raumNr).style.backgroundColor = '#660066';
         }
       });
     });
+  }
+
+  public addNewBooking() {
+    const newTermin: Termin = new Termin();
+    newTermin.startzeit = new Date();
+    newTermin.endzeit = new Date();
+    newTermin.bezeichnung = this._bez;
+    newTermin.raum = this.selectedRoom;
+    newTermin.raumNr.id = newTermin.raum.id;
+    this.terminService.create(newTermin);
+
   }
 }
