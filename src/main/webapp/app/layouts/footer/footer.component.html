@@ -1,22 +1,28 @@
 <div class="footer footer-color">
-    <div class="footer-left">
-        <img src="../../../content/images/GoVisual.png"></img>
-    </div>
+    <div class="container-fluid align-items-end">
+        <div class="row">
 
-    <div class="footer-center">
-        <span class="footer-center">
-            © 2018 - <span id="u6778-2">GO</span>VISUAL / BLACKHOLE
-        </span>
-    </div>
-    <div class="d-flex">
-        <a class="mr-auto" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/" (click)="collapseNavbar()">
-                IMPRESSUM
-        </a>
-            <span>
-                    &#160; - &#160;
-            </span>
-        <a class="mr-auto" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/" (click)="collapseNavbar()">
-                DATENSCHUTZERKLÄRUNG
-        </a>
+                <div class="col-4">
+                        <img src="../../../content/images/GoVisual.png"></img>
+                    </div>
+                
+                    <div class="col-4">
+                        <span class="footer-center text-white">
+                            © 2018 - <span id="u6778-2">GO</span>VISUAL / BLACKHOLE
+                        </span>
+                    </div>
+                    <div class="col-4">
+                        <a class="mr-auto" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/" (click)="collapseNavbar()">
+                                IMPRESSUM
+                        </a>
+                            <span>
+                                    &#160; - &#160;
+                            </span>
+                        <a class="mr-auto" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/" (click)="collapseNavbar()">
+                                DATENSCHUTZERKLÄRUNG
+                        </a>
+                    </div>
+
+        </div>
     </div>
 </div>

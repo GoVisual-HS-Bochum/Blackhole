@@ -5,6 +5,10 @@ import { ItemSet, ItemSetService } from '../entities/item-set';
 import { ItemSetItemService, ItemSetItem } from '../entities/item-set-item';
 import { ItemService, Item } from '../entities/item';
 import { TerminService, Termin } from '../entities/termin';
+import { BaseEntity } from '../shared';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { Time } from '@angular/common';
 
 @Component({
   selector: 'jhi-room-overview',
@@ -27,6 +31,13 @@ export class RoomOverviewComponent implements OnInit {
   items: Item[];
   termine: Termin[];
   showBuchen: Boolean = false;
+  /* Elemente von Buchen Button */
+  startTime: Time;
+  endTime: Time;
+  bez: string;
+  date: number = Date.now();
+  selectedRoom: Raum;
+  termin: Termin;
 
   constructor(private positionRaumService: PositionRaumService,
     private raumService: RaumService,
@@ -40,6 +51,7 @@ export class RoomOverviewComponent implements OnInit {
       this.termine = new Array<Termin>();
 
       const raum: Raum = this.raeume[index];
+      this.selectedRoom = raum;
       if (this.itemSets !== null && this.itemSets !== undefined) {
         this.itemSets.forEach((element) => {
           const itemSet: ItemSet = element;
@@ -85,6 +97,7 @@ export class RoomOverviewComponent implements OnInit {
     this.itemSetItems = new Array<ItemSetItem>();
     this.filterList = new Array<Item>();
     this.selectedFilter = new Array<Item>();
+    this.termin = new Termin();
 
     this.positionRaumService.query()
       .map((positionRaum) => positionRaum.body)
@@ -132,9 +145,9 @@ export class RoomOverviewComponent implements OnInit {
 
   getClass(level: number) {
     if (this.levels[level] === this.selectedLevel) {
-      return 'btn btn-light';
+      return 'btn btn-light btn-block ';
     } else {
-      return 'btn btn-secondary';
+      return 'btn btn-secondary btn-block';
     }
   }
 
@@ -163,6 +176,11 @@ export class RoomOverviewComponent implements OnInit {
       this.selectedFilter.push(filterID);
     }
     this.colorRoomsByFilter();
+  }
+
+  public addNewBooking() {
+    this.termin.raumNr = this.selectedRoom;
+    this.terminService.create(this.termin).subscribe();
   }
 
   private colorRoomsByFilter() {
@@ -202,9 +220,8 @@ export class RoomOverviewComponent implements OnInit {
 
     this.raeume.forEach((r) => {
       raeume.forEach((filteredRaum) => {
-        
         if (r.id === filteredRaum.id) {
-          document.getElementById(filteredRaum.raumNr).style.backgroundColor = '#660066';
+          document.getElementById(filteredRaum.raumNr).style.backgroundColor = 'hsla(11, 0%, 35%, 0.2)';
         }
       });
     });
